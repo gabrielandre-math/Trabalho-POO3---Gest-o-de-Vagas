@@ -2,7 +2,7 @@ name: Trabalho POO3 - Gestão de Vagas
 
 on:
   push:
-    branches: [master]  # remova o espaço depois de master
+    branches: [master]
 
 jobs:
   build:
@@ -27,4 +27,5 @@ jobs:
             ${{ runner.os }}-m2-
 
       - name: Build and run tests
+        working-directory: gestao_vagas
         run: mvn clean verify --batch-mode
