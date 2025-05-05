@@ -28,4 +28,4 @@ jobs:
 
       - name: Build and run tests
         working-directory: gestao_vagas
-        run: mvn clean verify --batch-mode
+        run: mvn clean verify -Dstyle.color=always
