@@ -138,11 +138,8 @@ A API ficará disponível em `http://localhost:8080`.
 
 ## 📄 Documentação
 
-* **Swagger UI**:
-  `http://localhost:8080/swagger-ui/index.html`
-
-* **OpenAPI spec**:
-  `http://localhost:8080/v3/api-docs`
+* **Swagger UI**: `http://localhost:8080/swagger-ui/index.html`
+* **OpenAPI spec**: `http://localhost:8080/v3/api-docs`
 
 ---
 
@@ -159,19 +156,27 @@ A API ficará disponível em `http://localhost:8080`.
 <table>
   <tr>
     <td align="center">
-      <img src="https://media.licdn.com/dms/image/v2/D4D03AQHRJ5NU33UGjA/profile-displayphoto-shrink_800_800/B4DZUCNjwYG4Ac-/0/1739498864456?e=1752105600&v=beta&t=PhH0bZqYkvwO3tvn9sYWiZA6lzAzMxQ9RjSswrf0i5I" width="100" alt="Gabriel André"/><br/>
-      <strong>Gabriel André</strong><br/>Desenvolvedor Full-Stack & UI/UX
+      <a href="https://www.linkedin.com/in/gabrielandredev/">
+        <img src="https://media.licdn.com/dms/image/v2/D4D03AQHRJ5NU33UGjA/profile-displayphoto-shrink_800_800/B4DZUCNjwYG4Ac-/0/1739498864456?e=1752105600&v=beta&t=PhH0bZqYkvwO3tvn9sYWiZA6lzAzMxQ9RjSswrf0i5I" width="100" alt="Gabriel André"/>
+      </a><br/>
+      <strong><a href="https://www.linkedin.com/in/gabriel-andre-profile/">Gabriel André</a></strong><br/>Desenvolvedor Back-End & UI/UX
     </td>
     <td align="center">
-      <img src="https://media.licdn.com/dms/image/v2/D4D03AQG41SYtO7ZAYg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1693257952627?e=1752105600&v=beta&t=sfMNw8hUjfir6oHWtz9v6EkHx3-OC0f9sMoB7XPMuO4" width="100" alt="Douglas Alexsander"/><br/>
-      <strong>Douglas Alexsander</strong><br/>Desenvolvedor Full-Stack
+      <a href="https://www.linkedin.com/in/alexferreira92/">
+        <img src="https://media.licdn.com/dms/image/v2/D4D03AQG41SYtO7ZAYg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1693257952627?e=1752105600&v=beta&t=sfMNw8hUjfir6oHWtz9v6EkHx3-OC0f9sMoB7XPMuO4" width="100" alt="Douglas Alexsander"/>
+      </a><br/>
+      <strong><a href="https://www.linkedin.com/in/douglas-alexsander-profile/">Douglas Alexsander</a></strong><br/>Desenvolvedor Full-Stack
     </td>
     <td align="center">
-      <img src="https://media.istockphoto.com/id/1386179512/photo/computer-hacker-stealing-data-from-a-laptop.jpg?s=612x612&w=0&k=20&c=uaPBMvpmnqgulWYWnHqgEqec3OWwwCjv7k9D_VAeDV0=" width="100" alt="Christian"/><br/>
-      <strong>Christian</strong><br/>Desenvolvedor e DevOps
+      <a href="https://www.linkedin.com/in/christian-profile/">
+        <img src="https://media.istockphoto.com/id/1386179512/photo/computer-hacker-stealing-data-from-a-laptop.jpg?s=612x612&w=0&k=20&c=uaPBMvpmnqgulWYWnHqgEqec3OWwwCjv7k9D_VAeDV0=" width="100" alt="Christian"/>
+      </a><br/>
+      <strong><a href="https://www.linkedin.com/in/christian-profile/">Christian</a></strong><br/>Desenvolvedor & DevOps
     </td>
   </tr>
 </table>
+
+> Clique no nome ou na foto para visitar o perfil LinkedIn de cada contribuinte.
 
 ---
 
@@ -189,6 +194,3 @@ A API ficará disponível em `http://localhost:8080`.
 Uso acadêmico para POO3 – Prof. Fábio Luís Guia da Conceição.
 
 *Desenvolvido por Gabriel André, Douglas Alexsander e Christian.*
-
-```
-```
