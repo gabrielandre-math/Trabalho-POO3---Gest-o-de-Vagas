@@ -28,34 +28,38 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @RequestMapping("/company/job")
 public class JobController {
 
-    @Autowired
-    private CreateJobUseCase createJobUseCase;
+        @Autowired
+        private CreateJobUseCase createJobUseCase;
 
-    @Operation(summary = "Criar nova vaga", description = """
-            Cria uma nova vaga associada à empresa autenticada.
-            """)
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", content = {
-                    @Content(schema = @Schema(implementation = JobEntity.class))
-            })
-    })
+        @Operation(summary = "Criar nova vaga", description = """
+                        Cria uma nova vaga associada à empresa autenticada.
+                        """)
+        @ApiResponses({
+                        @ApiResponse(responseCode = "200", content = {
+                                        @Content(schema = @Schema(implementation = JobEntity.class))
+                        })
+        })
 
-    @PostMapping("/new-job")
-    @PreAuthorize("hasRole('COMPANY')")
-    @SecurityRequirement(name = "jwt_auth")
-    public ResponseEntity<JobEntity> create(
-            @Valid @RequestBody CreateJobDTO createJobDTO,
-            HttpServletRequest request) {
-        var companyId = UUID.fromString(request.getAttribute("company_id").toString());
+        @PostMapping("/new-job")
+        @PreAuthorize("hasRole('COMPANY')")
+        @SecurityRequirement(name = "jwt_auth")
+        public ResponseEntity<Object> create(
+                        @Valid @RequestBody CreateJobDTO createJobDTO,
+                        HttpServletRequest request) {
+                var companyId = UUID.fromString(request.getAttribute("company_id").toString());
+                try {
+                        var jobEntity = JobEntity.builder()
+                                        .benefits(createJobDTO.getBenefits())
+                                        .companyId(companyId)
+                                        .description(createJobDTO.getDescription())
+                                        .level(createJobDTO.getLevel())
+                                        .build();
 
-        var jobEntity = JobEntity.builder()
-                .benefits(createJobDTO.getBenefits())
-                .companyId(companyId)
-                .description(createJobDTO.getDescription())
-                .level(createJobDTO.getLevel())
-                .build();
+                        var result = createJobUseCase.execute(jobEntity);
+                        return ResponseEntity.ok().body(result);
+                } catch (Exception e) {
+                        return ResponseEntity.badRequest().body(e.getMessage());
+                }
 
-        var created = createJobUseCase.execute(jobEntity);
-        return ResponseEntity.ok(created);
-    }
+        }
 }

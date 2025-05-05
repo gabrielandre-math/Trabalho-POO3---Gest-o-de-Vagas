@@ -17,12 +17,17 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity(name = "company")
 @Table(name = "companies")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CompanyEntity {
 
     @Id

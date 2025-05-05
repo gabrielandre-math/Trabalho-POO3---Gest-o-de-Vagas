@@ -18,9 +18,9 @@ public class SecurityConfig {
     private SecurityCandidateFilter securityCandidateFilter;
 
     @Autowired
-    private SecurityFilter securityFilter;
+    private SecurityCompanyFilter securityCompanyFilter;
 
-    private static final String[] SWAGGER_LIST = {
+    private static final String[] PERMIT_ALL_LIST = {
             "/swagger-ui/**",
             "/v3/api-docs/**",
             "/swagger-resources/**"
@@ -30,16 +30,18 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
+
                     auth.requestMatchers("/candidate/register").permitAll()
+
                             .requestMatchers("/company/register").permitAll()
                             .requestMatchers("/company/auth").permitAll()
                             .requestMatchers("/candidate/auth").permitAll()
-                            .requestMatchers(SWAGGER_LIST).permitAll();
+                            .requestMatchers(PERMIT_ALL_LIST).permitAll();
 
                     auth.anyRequest().authenticated();
                 })
                 .addFilterBefore(securityCandidateFilter, BasicAuthenticationFilter.class)
-                .addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
+                .addFilterBefore(securityCompanyFilter, BasicAuthenticationFilter.class);
 
         return http.build();
     }

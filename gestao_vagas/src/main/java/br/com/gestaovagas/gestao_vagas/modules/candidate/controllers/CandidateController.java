@@ -12,7 +12,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.gestaovagas.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
+import br.com.gestaovagas.gestao_vagas.modules.candidate.entities.ApplyJobEntity;
 import br.com.gestaovagas.gestao_vagas.modules.candidate.entities.CandidateEntity;
+import br.com.gestaovagas.gestao_vagas.modules.candidate.useCases.ApplyJobCandidateUseCase;
 import br.com.gestaovagas.gestao_vagas.modules.candidate.useCases.CreateCandidateUseCase;
 import br.com.gestaovagas.gestao_vagas.modules.candidate.useCases.ListAllJobsByFilterUseCase;
 import br.com.gestaovagas.gestao_vagas.modules.candidate.useCases.ProfileCandidateUseCase;
@@ -41,6 +43,9 @@ public class CandidateController {
 
     @Autowired
     private ListAllJobsByFilterUseCase listAllJobsByFilterUseCase;
+
+    @Autowired
+    private ApplyJobCandidateUseCase applyJobCandidateUseCase;
 
     @Operation(summary = "Criar novo candidato", description = """
             Registra um novo candidato com os seguintes campos:
@@ -107,4 +112,31 @@ public class CandidateController {
     public List<JobEntity> findJobByFilter(@RequestParam String filter) {
         return this.listAllJobsByFilterUseCase.execute(filter);
     }
+
+    @Operation(summary = "Candidatar-se a uma vaga", description = "Permite que o candidato autenticado aplique-se a uma vaga informando o UUID da Vaga.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Candidatura realizada com sucesso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApplyJobEntity.class), examples = @ExampleObject(name = "CandidaturaExemplo", value = """
+                    {
+                      "id": "ae12f3c4-5b6a-7d8e-9f01-23456789abcd",
+                      "candidateId": "123e4567-e89b-12d3-a456-426614174000",
+                      "jobId": "987f6543-21dc-ba09-8765-4321fedcba98"
+                    }
+                    """))),
+            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos ou recurso não encontrado"),
+            @ApiResponse(responseCode = "401", description = "Não autorizado")
+    })
+    @PostMapping("/job/apply")
+    @PreAuthorize("hasRole('CANDIDATE')")
+    @SecurityRequirement(name = "jwt_auth")
+    public ResponseEntity<Object> applyJob(HttpServletRequest request, @RequestBody UUID idJob) {
+        var idCandidate = request.getAttribute("candidate_id");
+
+        try {
+            var result = this.applyJobCandidateUseCase.execute(UUID.fromString(idCandidate.toString()), idJob);
+            return ResponseEntity.ok().body(result);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }
