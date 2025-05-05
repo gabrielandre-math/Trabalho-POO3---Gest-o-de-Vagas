@@ -1,35 +1,51 @@
 package br.com.gestaovagas.gestao_vagas.exceptions;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContext;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class ExceptionHandlerController {
-    private ExceptionHandlerController(MessageSource message) {
-        this.messageSource = message;
+    @ExceptionHandler(UserFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<String> handleUserFoundException() {
+        return ResponseEntity.badRequest().build();
     }
 
-    private MessageSource messageSource;
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<String> handleUserNotFoundValidException() {
+        return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(JobNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<String> handleJobNotFoundException() {
+        return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(HttpClientErrorException.Unauthorized.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ResponseEntity<String> handleUnathorizedException(HttpClientErrorException.Unauthorized e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<List<ErrorMessageDTO>> handleMethodArgumentNotValidException(
-            MethodArgumentNotValidException e) {
-        List<ErrorMessageDTO> dto = new ArrayList<>();
-        e.getBindingResult().getFieldErrors().forEach(err -> {
-            String message = messageSource.getMessage(err, LocaleContextHolder.getLocale());
-            ErrorMessageDTO error = new ErrorMessageDTO(message, err.getField());
-            dto.add(error);
-        });
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public ResponseEntity<List<ValidErrorDTO>> handlerError422(MethodArgumentNotValidException ex) {
+        var errors = ex.getFieldErrors();
+        return ResponseEntity.badRequest().body(errors.stream().map(ValidErrorDTO::new).toList());
+    }
 
-        return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
+    public record ValidErrorDTO(String field, String message) {
+        public ValidErrorDTO(FieldError error) {
+            this(error.getField(), error.getDefaultMessage());
+        }
     }
 }
