@@ -2,7 +2,7 @@ name: Trabalho POO3 - Gestão de Vagas
 
 on:
   push:
-    branches: [master]
+    branches: [master ]
 
 jobs:
   build:
