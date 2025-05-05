@@ -159,13 +159,13 @@ A API ficará disponível em `http://localhost:8080`.
       <a href="https://www.linkedin.com/in/gabrielandredev/">
         <img src="https://media.licdn.com/dms/image/v2/D4D03AQHRJ5NU33UGjA/profile-displayphoto-shrink_800_800/B4DZUCNjwYG4Ac-/0/1739498864456?e=1752105600&v=beta&t=PhH0bZqYkvwO3tvn9sYWiZA6lzAzMxQ9RjSswrf0i5I" width="100" alt="Gabriel André"/>
       </a><br/>
-      <strong><a href="https://www.linkedin.com/in/gabriel-andre-profile/">Gabriel André</a></strong><br/>Desenvolvedor Back-End & UI/UX
+      <strong><a href="https://www.linkedin.com/in/gabrielandredev/">Gabriel André</a></strong><br/>Desenvolvedor Back-End & UI/UX
     </td>
     <td align="center">
       <a href="https://www.linkedin.com/in/alexferreira92/">
         <img src="https://media.licdn.com/dms/image/v2/D4D03AQG41SYtO7ZAYg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1693257952627?e=1752105600&v=beta&t=sfMNw8hUjfir6oHWtz9v6EkHx3-OC0f9sMoB7XPMuO4" width="100" alt="Douglas Alexsander"/>
       </a><br/>
-      <strong><a href="https://www.linkedin.com/in/douglas-alexsander-profile/">Douglas Alexsander</a></strong><br/>Desenvolvedor Full-Stack
+      <strong><a href="https://www.linkedin.com/in/alexferreira92/">Douglas Alexsander</a></strong><br/>Desenvolvedor Full-Stack
     </td>
     <td align="center">
       <a href="https://www.linkedin.com/in/christian-profile/">
