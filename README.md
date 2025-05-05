@@ -44,7 +44,7 @@ Este projeto adota principais características de **Arquitetura Hexagonal** (Por
   + JWT Providers
 ````
 
-### Diagrama Detalhado
+### 🗺️ Diagrama Detalhado
 
 ![Diagrama Arquitetura](https://github.com/user-attachments/assets/ac6ea531-e267-40b7-acd8-354fdcc82b0f)
 
@@ -52,7 +52,7 @@ Este projeto adota principais características de **Arquitetura Hexagonal** (Por
 * **UseCases** implementam casos de uso puros, desacoplados de frameworks.
 * **Entities/DTOs** contêm regras de domínio mínimas.
 * **Repositories** abstraem acesso ao banco (PostgreSQL/H2).
-* **Segurança** via filtros JWT (`SecurityCandidateFilter` / `SecurityCompanyFilter`).
+* **Segurança** via JWT + **RBAC** (Roles: `CANDIDATE`, `COMPANY`) usando filtros `SecurityCandidateFilter` / `SecurityCompanyFilter`.
 
 ---
 
@@ -138,10 +138,10 @@ A API ficará disponível em `http://localhost:8080`.
 
 ## 📄 Documentação
 
-* **Swagger UI**
+* **Swagger UI**:
   `http://localhost:8080/swagger-ui/index.html`
 
-* **OpenAPI spec**
+* **OpenAPI spec**:
   `http://localhost:8080/v3/api-docs`
 
 ---
@@ -151,6 +151,27 @@ A API ficará disponível em `http://localhost:8080`.
 * **Profile** `test` usa H2 em memória (`create-drop`).
 * **Testes** com JUnit 5, Mockito e AssertJ.
 * **GitHub Actions**: pipeline `mvn clean verify -Dstyle.color=always` em cada push.
+
+---
+
+## 👥 Contribuidores
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://media.licdn.com/dms/image/v2/D4D03AQHRJ5NU33UGjA/profile-displayphoto-shrink_800_800/B4DZUCNjwYG4Ac-/0/1739498864456?e=1752105600&v=beta&t=PhH0bZqYkvwO3tvn9sYWiZA6lzAzMxQ9RjSswrf0i5I" width="100" alt="Gabriel André"/><br/>
+      <strong>Gabriel André</strong><br/>Desenvolvedor Full-Stack & UI/UX
+    </td>
+    <td align="center">
+      <img src="https://media.licdn.com/dms/image/v2/D4D03AQG41SYtO7ZAYg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1693257952627?e=1752105600&v=beta&t=sfMNw8hUjfir6oHWtz9v6EkHx3-OC0f9sMoB7XPMuO4" width="100" alt="Douglas Alexsander"/><br/>
+      <strong>Douglas Alexsander</strong><br/>Desenvolvedor Full-Stack
+    </td>
+    <td align="center">
+      <img src="https://media.istockphoto.com/id/1386179512/photo/computer-hacker-stealing-data-from-a-laptop.jpg?s=612x612&w=0&k=20&c=uaPBMvpmnqgulWYWnHqgEqec3OWwwCjv7k9D_VAeDV0=" width="100" alt="Christian"/><br/>
+      <strong>Christian</strong><br/>Desenvolvedor e DevOps
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -169,3 +190,5 @@ Uso acadêmico para POO3 – Prof. Fábio Luís Guia da Conceição.
 
 *Desenvolvido por Gabriel André, Douglas Alexsander e Christian.*
 
+```
+```
