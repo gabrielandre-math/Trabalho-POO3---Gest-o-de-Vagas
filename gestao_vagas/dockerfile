@@ -16,10 +16,12 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jdk-alpine
 
 WORKDIR /app
+# Cria um usuário comum chamado default evitando privilégios desnecessários
+RUN addgroup -S default && adduser -S default -G default
 
 # copia apenas o JAR gerado na etapa anterior
 COPY --from=build /build/target/gestao_vagas-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
-
+USER default
 ENTRYPOINT ["java", "-jar", "app.jar"]
