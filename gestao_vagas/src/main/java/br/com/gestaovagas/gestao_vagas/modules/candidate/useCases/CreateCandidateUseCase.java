@@ -1,5 +1,6 @@
 package br.com.gestaovagas.gestao_vagas.modules.candidate.useCases;
 
+import br.com.gestaovagas.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class CreateCandidateUseCase {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public CandidateEntity execute(@Valid CandidateEntity candidateEntity) {
+    public ProfileCandidateResponseDTO execute(@Valid CandidateEntity candidateEntity) {
         this.candidateRepository
                 .findByUsernameOrEmail(candidateEntity.getUsername(), candidateEntity.getEmail())
                 .ifPresent(user -> {
@@ -27,6 +28,8 @@ public class CreateCandidateUseCase {
         var password = passwordEncoder.encode(candidateEntity.getPassword());
         candidateEntity.setPassword(password);
 
-        return candidateRepository.save(candidateEntity);
+        var candidateSaved = candidateRepository.save(candidateEntity);
+
+        return new ProfileCandidateResponseDTO(candidateSaved);
     }
 }
