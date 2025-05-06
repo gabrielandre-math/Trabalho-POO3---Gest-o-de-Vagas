@@ -6,7 +6,7 @@
 **Integrantes:**  
 - Gabriel André  
 - Douglas Alexsander  
-- Christian  
+- Crystian Lefundes  
 
 ---
 
@@ -23,7 +23,7 @@
 
 ## 🏛️ Arquitetura
 
-Este projeto adota principais características de **Arquitetura Hexagonal** (Ports & Adapters / Clean Architecture):
+Este projeto adota principais características de **Arquitetura em Camadas** (Ports & Adapters):
 
 ```text
 ┌────────────────────────────┐
@@ -178,15 +178,15 @@ A API ficará disponível em `http://localhost:8080`.
       Desenvolvedor Full-Stack
     </td>
     <td align="center">
-      <a href="https://www.linkedin.com/in/christian-profile/" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.linkedin.com/in/crystian-lefundes/" target="_blank" rel="noopener noreferrer">
         <img
-          src="https://media.istockphoto.com/id/1386179512/photo/computer-hacker-stealing-data-from-a-laptop.jpg?s=612x612&w=0&k=20&c=uaPBMvpmnqgulWYWnHqgEqec3OWwwCjv7k9D_VAeDV0="
+          src="https://avatars.githubusercontent.com/u/65630225?v=4"
           width="100"
-          alt="Christian"
+          alt="Crystian Lefundes"
         /><br/>
-        <strong>Christian</strong>
+        <strong>Crystian Lefundes</strong>
       </a><br/>
-      Desenvolvedor & DevOps
+      DevOps & Security
     </td>
   </tr>
 </table>
